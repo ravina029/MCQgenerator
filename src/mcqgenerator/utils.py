@@ -42,5 +42,6 @@ def get_table_data(Quiz):
             quiz_data.append({"MCQ":mcq, "Choices":options,"Correct":correct})
         return quiz_data
 
-    except:
-        pass
+    except Exception as e:
+            raise Exception("error in creating the tablular file"+str(e))
+        

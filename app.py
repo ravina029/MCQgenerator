@@ -9,7 +9,6 @@ from src.mcqgenerator.utils import read_file, get_table_data
 import streamlit as st
 from langchain_community.callbacks.manager import get_openai_callback
 from langchain_openai import ChatOpenAI
-
 from src.mcqgenerator.Mcqgenerator import generate_evaluate_chain
 
 load_dotenv()  # Load environment variables
@@ -19,8 +18,8 @@ st.title("MCQ generator application with LangChain")
 with st.form("user input"):
     uploaded_file = st.file_uploader("Upload PDF or text file")
     number = st.number_input("No of MCQs", min_value=3, max_value=50)
-    subject = st.text_input("Insert subject", max_chars=20)
-    tone = st.text_input("Complexity level of questions", max_chars=20, placeholder='simple')
+    subject = st.text_input("Insert subject", max_chars=20)  # Corrected max_chars
+    tone = st.text_input("Complexity level of questions", max_chars=20, placeholder='simple')  # Corrected max_chars
     button = st.form_submit_button("Create MCQs")
 
     if button and uploaded_file is not None and number and subject and tone:
@@ -55,13 +54,15 @@ with st.form("user input"):
                     if Quiz is not None and Quiz.startswith("### response_json"):
                         Quiz = Quiz.replace("### response_json", "").strip()
 
+                        """
                         try:
                             quiz = json.loads(Quiz)
                             print("Successfully parsed JSON!")
                         except json.JSONDecodeError as e:
                             print("JSON decoding failed:", e)
+                        """
 
-                        table_data = get_table_data(quiz)
+                        table_data = get_table_data(Quiz)
                         if table_data is not None:
                             df = pd.DataFrame(table_data)
                             df.index = df.index + 1 
@@ -73,4 +74,3 @@ with st.form("user input"):
                             st.error("Error in the table data") 
                     else:
                         st.write(response)
- 
