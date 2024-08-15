@@ -19,7 +19,7 @@ def read_file(file):
         return file.read().decode("utf-8")
     
     else:
-        raise Exception("Unsupported file format is pdf and txt format is supported")
+        raise Exception("Unsupported file format, only pdf and txt format is supported")
 
 
 

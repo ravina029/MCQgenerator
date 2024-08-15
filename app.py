@@ -18,14 +18,14 @@ st.title("MCQ generator application with LangChain")
 with st.form("user input"):
     uploaded_file = st.file_uploader("Upload PDF or text file")
     number = st.number_input("No of MCQs", min_value=3, max_value=50)
-    subject = st.text_input("Insert subject", max_chars=20)  # Corrected max_chars
-    tone = st.text_input("Complexity level of questions", max_chars=20, placeholder='simple')  # Corrected max_chars
+    subject = st.text_input("Insert subject", max_chars=40)  
+    tone = st.text_input("Complexity level of questions", max_chars=30, placeholder='simple')  
     button = st.form_submit_button("Create MCQs")
 
     if button and uploaded_file is not None and number and subject and tone:
         with st.spinner("Loading...."):
             try:
-                text = read_file(uploaded_file)  # Ensure read_file accepts an argument
+                text = read_file(uploaded_file)  
                 with open("/Users/ravina/Desktop/MCQGenerator/response.json", "r") as f:
                     response_json = json.load(f)
 
