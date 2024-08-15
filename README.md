@@ -23,8 +23,8 @@ This module contains the code for developing MCQ generator application for the t
 6. follow all the instructions shown on the application interface to create the MCQs.
 
 # Application Layout
-![Alt Text](/Users/ravina/Desktop/MCQGenerator/images/image1.png)
+![Alt Text](images/image1.png)
 
-![Alt Text](/Users/ravina/Desktop/MCQGenerator/images/image2.png)
+![Alt Text](images/image2.png)
 
-![Alt Text](/Users/ravina/Desktop/MCQGenerator/images/image3.png)
+![Alt Text](images/image3.png)
